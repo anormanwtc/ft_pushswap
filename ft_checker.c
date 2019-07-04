@@ -6,37 +6,78 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/03 18:10:09 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/04 16:23:47 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_strswap(char **av1, char **av2)
-{
-	char *temp;
+#include "libftpushswap.h"
 
-	temp = *av1;
-	*av1 = *av2;
-	*av2 = temp;
+static void		st_swap(char ver, t_stk **stacks)
+{
+	int temp;
+
+	if (ver == 'a' || ver == 's')
+	{
+		temp = (stacks[0])->val;
+		(stacks[0])->val = (stacks[0])->prev->val;
+		(stacks[0])->prev->val = temp;
+	}
+	if (ver == 'b' || ver == 's')
+	{
+		temp = (stacks[1])->val;
+		(stacks[1])->val = (stacks[1])->prev->val;
+		(stacks[1])->prev->val = temp;
+	}
 }
 
-static int	st_checker()
+static t_stk	*st_fill(int ac, char **av, t_stk *list)
 {
+	while (ac-- > 1)
+	{
+		if (ft_can_atoi(*av) != 1)
+		{
+			ft_stackdel(list);
+			return (NULL);
+		}
+		list = ft_stackadd(list, ft_atoi(*av));
+		av++;
+	}
+	return (list);
+}
+
+static int		st_do_argvs(t_stk **stacks)
+{
+	char	*str;
+	char	*temp;
+	int		red;
+	int		i;
+
+	str = (char *)malloc(BUFF + 1);
+	while ((red = read(1, str, BUFF)) > 0)
+	{
+		str[red] = '\0';
+		i = 0;
+		while (str[i] != 's' && str[i] != 'p' && str[i] != 'r')
+			i++;
+		if (str[i++] == 's')
+			st_swap(str[i++], stacks);
+	}
 	return (0);
 }
 
-static int	st_do_argvs(char **av)
+int				main(int ac, char **av)
 {
+	t_stk	*list;
 
-	return (0);
-}
-
-#include <stdio.h>
-
-int			main(int ac, char **av)
-{
-	if (ac < 3)
+	list = NULL;
+	if (ac < 2)
 		return (0);
 	av++;
-	st_do_argvs(av);
+	if (!(list = st_fill(ac, av, list)))
+	{
+		ft_putendl_fd("Error", 2);
+		return (0);
+	}
+	ft_stackprint(list);
 	return (0);
 }

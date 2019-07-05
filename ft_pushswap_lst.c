@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:37:42 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/04 16:22:27 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/05 11:50:27 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,22 @@ t_stk	*ft_stackadd(t_stk *start, int val)
 
 void	ft_stackrem(t_stk **node)
 {
+	t_stk temp;
+
+	if (*node != (*node)->next)
+		temp = (*node)->next;
+	else
+		temp = NULL;
 	(*node)->next->prev = (*node)->prev;
 	(*node)->prev->next = (*node)->next;
 	free(*node);
-	*node = NULL;
+	*node = temp;
 }
 
 /*
-** Removes a node and links the others back up;
+** Removes a node and links the others back up
+** sets the given to next for if it was the start and next is different.
+** If the chain is just 1 node then its set to null.
 */
 
 void	ft_stackprint(t_stk *start)

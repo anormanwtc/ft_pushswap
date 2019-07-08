@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/08 14:47:18 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/08 16:14:17 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ static int		st_swap(char ver, t_stk **stacks)
 	if (!stacks)
 		return (-1);
 	success = 0;
-	if ((ver == 'a' || ver == 's') && stacks[0])
-	{
-		temp = (stacks[0])->val;
-		(stacks[0])->val = (stacks[0])->next->val;
-		(stacks[0])->next->val = temp;
-		success++;
-	}
-	if ((ver == 'b' || ver == 's') && stacks[1])
-	{
-		temp = (stacks[1])->val;
-		(stacks[1])->val = (stacks[1])->next->val;
-		(stacks[1])->next->val = temp;
-		success += 2;
-	}
+	if ((ver == 'a' || ver == 's') && ++success)
+		if (stacks[0])
+		{
+			temp = (stacks[0])->val;
+			(stacks[0])->val = (stacks[0])->next->val;
+			(stacks[0])->next->val = temp;
+		}
+	if ((ver == 'b' || ver == 's') && (success += 2))
+		if (stacks[1])
+		{
+			temp = (stacks[1])->val;
+			(stacks[1])->val = (stacks[1])->next->val;
+			(stacks[1])->next->val = temp;
+		}
 	return (success);
 }
 
@@ -49,13 +49,13 @@ static int		st_rotate(char ver, t_stk **stacks)
 	result = 0;
 	if (!stacks)
 		return (-1);
-	if ((ver == 'a' || ver == 'r') && stacks[0] && ++result)
+	if ((ver == 'a' || ver == 'r') && ++result && stacks[0])
 		(stacks[0]) = (stacks[0])->next;
-	if ((ver == 'b' || ver == 'r') && stacks[1] && (result += 2))
+	if ((ver == 'b' || ver == 'r') && (result += 2) && stacks[1])
 		(stacks[1]) = (stacks[1])->next;
-	if ((ver == 'A' || ver == 'R') && stacks[0] && ++result)
+	if ((ver == 'A' || ver == 'R') && ++result && stacks[0])
 		(stacks[0]) = (stacks[0])->prev;
-	if ((ver == 'B' || ver == 'R') && stacks[1] && (result += 2))
+	if ((ver == 'B' || ver == 'R') && (result += 2) && stacks[1])
 		(stacks[1]) = (stacks[1])->prev;
 	return (result);
 }
@@ -68,25 +68,26 @@ static int		st_rotate(char ver, t_stk **stacks)
 
 static int		st_push(char ver, t_stk **stacks)
 {
+	int	res;
+
+	res = 0;
 	if (!stacks)
 		return (-1);
-	if (ver == 'a' && stacks[1])
+	if (ver == 'a' && ++res && stacks[1])
 	{
 		if (!(ft_stackadd(stacks[0], (stacks[1])->val)))
 			return (-1);
 		stacks[0] = (stacks[0])->prev;
 		ft_stackrem(stacks + 1);
-		return (1);
 	}
-	if (ver == 'b' && stacks[0])
+	if (ver == 'b' && (res += 2) && stacks[0])
 	{
 		if (!(ft_stackadd(stacks[1], (stacks[0])->val)))
 			return (-1);
 		stacks[0] = (stacks[0])->prev;
 		ft_stackrem(stacks);
-		return (2);
 	}
-	return (0);
+	return (res);
 }
 
 /*
@@ -105,21 +106,22 @@ void			ft_do_inputs(t_stk **stacks)
 	valid = 'y';
 	while ((red = get_next_line(1, &input)) > 0 && valid > 0)
 	{
-		if (*input == 's')
+		printf("%d\n", valid);
+		if (*input == 's' && !input[2])
 			valid = st_swap(input[1], stacks);
-		else if (*input == 'p')
+		else if (*input == 'p' && !input[2])
 			valid = st_push(input[1], stacks);
 		else if (*input == 'r' && !input[2])
 			valid = st_rotate(input[1], stacks);
-		else if (*input == 'r')
+		else if (*input == 'r' && !input[3])
 			valid = st_rotate(ft_toupper(input[2]), stacks);
 		else
 			valid = 0;
 	}
 	if (valid < 1)
-		ft_putstr_fd("Error invalid command", 2);
+		ft_putendl_fd("Error invalid command", 2);
 	if (red < 0)
-		ft_putstr_fd("Error read failed", 2);
+		ft_putendl_fd("Error read failed", 2);
 }
 
 

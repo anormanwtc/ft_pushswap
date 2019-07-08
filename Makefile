@@ -6,14 +6,16 @@
 #    By: anorman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:00:27 by anorman           #+#    #+#              #
-#    Updated: 2019/07/08 15:00:00 by anorman          ###   ########.fr        #
+#    Updated: 2019/07/08 16:09:22 by anorman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -Wall -Werror -Wextra
-NAME = libft.a
-FILES = ft_pushswap_lst.c ft_checker_main.c ft_checker_avs.c\
-		ft_pushswap.c
+NAME = libftpushswap.a
+FILES = ft_pushswap_lst.c ft_checker_avs.c\
+
+CHECKER = ft_checker_main.c
+PUSHSWAP = ft_pushswap_main.c
 
 OBJ = $(FILES:%.c=%.o)
 OBJDIR = objects
@@ -25,14 +27,15 @@ all: $(NAME)
 
 $(NAME):
 	$(MLIBA) re
-	@gcc -c $(FLAGS) $(FILES)
+	@gcc -c $(FLAGS) $(FILES) $(CHECKER) $(PUSHSWAP)
 	@echo "gcc -c $(FLAGS) FILES"
 	@ar -rcs $(NAME) $(OBJ)
 	@echo "ar -rcs $(NAME) OBJ"
-	@gcc -o checker $(OBJ) $(LIBA)
+	@gcc -o checker $(OBJ) $(LIBA) $(CHECKER:%.c=%.o)
+	@gcc -o pushswap $(OBJ) $(LIBA) $(PUSHSWAP:%.c=%.o)
 
 clean:
-	@rm -rf $(OBJ)
+	@rm -rf $(OBJ) $(CHECKER:%.c=%.o) $(PUSHSWAP:%.c=%.o)
 	@echo "rm -rf OBJ"
 	$(MLIBA) clean
 
@@ -43,5 +46,5 @@ fclean: clean
 re: fclean all
 
 debug:
-	@gcc -o checker $(FILES)\
+	@gcc -o checker $(FILES) $(CHECKER)\
 		$(LIBA) -g -I libft/includes

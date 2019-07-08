@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/08 16:14:17 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/08 16:17:02 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ void			ft_do_inputs(t_stk **stacks)
 	valid = 'y';
 	while ((red = get_next_line(1, &input)) > 0 && valid > 0)
 	{
-		printf("%d\n", valid);
 		if (*input == 's' && !input[2])
 			valid = st_swap(input[1], stacks);
 		else if (*input == 'p' && !input[2])

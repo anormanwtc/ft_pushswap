@@ -6,7 +6,7 @@
 #    By: anorman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:00:27 by anorman           #+#    #+#              #
-#    Updated: 2019/07/08 16:09:22 by anorman          ###   ########.fr        #
+#    Updated: 2019/07/08 17:14:38 by anorman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ MLIBA = make -C libft
 all: $(NAME)
 
 $(NAME):
-	$(MLIBA) re
+	@$(MLIBA) re
+	@echo "compiling libft.a"
 	@gcc -c $(FLAGS) $(FILES) $(CHECKER) $(PUSHSWAP)
 	@echo "gcc -c $(FLAGS) FILES"
 	@ar -rcs $(NAME) $(OBJ)
@@ -37,9 +38,11 @@ $(NAME):
 clean:
 	@rm -rf $(OBJ) $(CHECKER:%.c=%.o) $(PUSHSWAP:%.c=%.o)
 	@echo "rm -rf OBJ"
-	$(MLIBA) clean
+	@$(MLIBA) clean
+	@echo "make -C libft clean"
 
 fclean: clean
+	@echo "make clean"
 	rm -f $(NAME)
 	$(MLIBA) fclean
 

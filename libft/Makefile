@@ -6,7 +6,7 @@
 #    By: anorman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:00:27 by anorman           #+#    #+#              #
-#    Updated: 2019/07/08 12:05:13 by anorman          ###   ########.fr        #
+#    Updated: 2019/07/08 16:26:25 by anorman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,17 +41,14 @@ all: $(NAME)
 
 $(NAME):
 	@gcc -c $(FLAGS) $(HEADER) $(FILES:%=$(SRCDIR)/%)
-	@echo "gcc -c $(FLAGS) FILES"
 	mkdir -p $(OBJDIR)
 	@mv $(OBJ) $(OBJDIR)
-	@echo "mv OBJ $(OBJDIR)"
 	@ar -rcs $(NAME) $(OBJ:%=$(OBJDIR)/%)
-	@echo "ar -rcs $(NAME) OBJ"
 
 clean:
-	rm -rf $(OBJDIR)
+	@rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all

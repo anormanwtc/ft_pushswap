@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 11:14:54 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/08 14:26:25 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/08 14:51:24 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int				main(int ac, char **av)
 	av++;
 	if (!(list[0] = ft_stackfill(ac, av)))
 	{
-		ft_putendl_fd("Error", 2);
+		ft_putendl_fd("Error stack failed", 2);
 		return (0);
 	}
 	list[1] = NULL;

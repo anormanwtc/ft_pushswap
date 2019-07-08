@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/08 14:26:33 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/08 14:47:18 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ t_stk			*ft_stackfill(int ac, char **av)
 	{
 		if (ft_can_atoi(*av) != 1)
 		{
+			ft_putendl_fd("Error arg contains non number", 2);
 			ft_stackdel(list);
 			return (NULL);
 		}

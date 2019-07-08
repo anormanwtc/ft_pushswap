@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:37:42 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/05 11:50:27 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/08 14:23:52 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_stk	*ft_stackadd(t_stk *start, int val)
 
 void	ft_stackrem(t_stk **node)
 {
-	t_stk temp;
+	t_stk *temp;
 
 	if (*node != (*node)->next)
 		temp = (*node)->next;

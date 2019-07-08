@@ -6,13 +6,13 @@
 #    By: anorman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:00:27 by anorman           #+#    #+#              #
-#    Updated: 2019/07/04 16:11:59 by anorman          ###   ########.fr        #
+#    Updated: 2019/07/08 12:05:13 by anorman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -Wall -Werror -Wextra
 NAME = libft.a
-FILES = ft_lstaddend.c ft_memmove.c ft_strdel.c ft_strnstr.c\
+FILES = get_next_line.c ft_lstaddend.c ft_memmove.c ft_strdel.c ft_strnstr.c\
 	ft_lstcat.c ft_memset.c ft_strdup.c ft_strndup.c ft_strrchr.c\
 	ft_lstdel.c ft_putchar.c ft_strequ.c ft_strrev.c \
 	ft_lstdelmid.c ft_putchar_fd.c ft_striter.c ft_strsplit.c\

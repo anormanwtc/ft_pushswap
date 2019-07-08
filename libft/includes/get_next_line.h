@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftpushswap.h                                    :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/04 14:32:40 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/08 14:23:18 by anorman          ###   ########.fr       */
+/*   Created: 2019/06/03 16:38:11 by anorman           #+#    #+#             */
+/*   Updated: 2019/07/08 12:05:34 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPUSHSWAP_H
-# define LIBFTPUSHSWAP_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-#include "libft/includes/libft.h"
+# include <unistd.h>
+# include "libft.h"
 
-#define BUFF 20
+# define BUFF_SIZE 100
 
-typedef struct	s_stk
+typedef struct	s_bmark
 {
-	int				val;
-	struct s_stk	*next;
-	struct s_stk	*prev;
-}				t_stk;
+	char			*red;
+	int				fd;
+	struct s_bmark	*next;
+}				t_bmark;
 
-t_stk			*ft_stackfill(int ac, char **av);
-void			ft_do_inputs(t_stk **stacks);
-
-t_stk			*ft_stackadd(t_stk *start, int val);
-void			ft_stackrem(t_stk **node);
-void			ft_stackdel(t_stk *node);
-void			ft_stackprint(t_stk *start);
+int				get_next_line(const int fd, char **line);
 
 #endif

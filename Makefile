@@ -6,13 +6,14 @@
 #    By: anorman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:00:27 by anorman           #+#    #+#              #
-#    Updated: 2019/07/09 12:34:19 by anorman          ###   ########.fr        #
+#    Updated: 2019/07/09 14:22:36 by anorman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -Wall -Werror -Wextra
 NAME = libftpushswap.a
-FILES = ft_pushswap_lst.c ft_checker_avs.c ft_pushswap_sort.c\
+FILES = ft_checker_avs.c ft_checker_check.c\
+		ft_pushswap_sort.c ft_pushswap_lst.c
 
 CHECKER = ft_checker_main.c
 PUSHSWAP = ft_pushswap_main.c

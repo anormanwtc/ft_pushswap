@@ -6,13 +6,13 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/08 16:23:14 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/09 14:14:57 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftpushswap.h"
 
-static int		st_swap(char ver, t_stk **stacks)
+int		ft_stkswap(char ver, t_stk **stacks)
 {
 	int temp;
 	int success;
@@ -38,11 +38,11 @@ static int		st_swap(char ver, t_stk **stacks)
 }
 
 /*
-** st_swap swaps the nodes based on the version: sa, sb or ss
+** ft_stkswap swaps the nodes based on the version: sa, sb or ss
 ** -1 for invalid stacks, 1 for a, 2 for b, 3 for both
 */
 
-static int		st_rotate(char ver, t_stk **stacks)
+int		ft_stkrotate(char ver, t_stk **stacks)
 {
 	int result;
 
@@ -61,12 +61,12 @@ static int		st_rotate(char ver, t_stk **stacks)
 }
 
 /*
-** st_rotate shifts the starts based on the version: ra, rb, rr
+** ft_stkrotate shifts the starts based on the version: ra, rb, rr
 ** capitals for reverse rotation, the caller should convert.
 ** -1 for invalid stacks, 1 for a, 2 for b, 3 for both
 */
 
-static int		st_push(char ver, t_stk **stacks)
+int		ft_stkpush(char ver, t_stk **stacks)
 {
 	int	res;
 
@@ -91,13 +91,13 @@ static int		st_push(char ver, t_stk **stacks)
 }
 
 /*
-** st_push shifts one node to the top stack specifed
+** ft_stkpush shifts one node to the top stack specifed
 ** since stackadd puts the new on the bottom, it rotates one too.
 ** then it deletes the node just shifted.
 ** -1 for invalid stacks or stackadd failure, 1 for pa, 2 for pb.
 */
 
-void			ft_do_inputs(t_stk **stacks)
+void	ft_do_inputs(t_stk **stacks)
 {
 	char	*input;
 	int		red;
@@ -107,13 +107,13 @@ void			ft_do_inputs(t_stk **stacks)
 	while ((red = get_next_line(1, &input)) > 0 && valid > 0 && input[0])
 	{
 		if (*input == 's' && !input[2])
-			valid = st_swap(input[1], stacks);
+			valid = ft_stkswap(input[1], stacks);
 		else if (*input == 'p' && !input[2])
-			valid = st_push(input[1], stacks);
+			valid = ft_stkpush(input[1], stacks);
 		else if (*input == 'r' && !input[2])
-			valid = st_rotate(input[1], stacks);
+			valid = ft_stkrotate(input[1], stacks);
 		else if (*input == 'r' && !input[3])
-			valid = st_rotate(ft_toupper(input[2]), stacks);
+			valid = ft_stkrotate(ft_toupper(input[2]), stacks);
 		else
 			valid = 0;
 	}
@@ -124,7 +124,7 @@ void			ft_do_inputs(t_stk **stacks)
 }
 
 
-t_stk			*ft_stackfill(int ac, char **av)
+t_stk	*ft_stackfill(int ac, char **av)
 {
 	t_stk	*list;
 

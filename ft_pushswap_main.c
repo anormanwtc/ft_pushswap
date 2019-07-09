@@ -6,29 +6,30 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:51:53 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/09 12:50:32 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/09 14:22:14 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftpushswap.h"
 
-void	st_comprint(t_list *start)
+void		st_comprint(t_list *commands)
 {
 	char	*cont;
 
-	if (!start)
+	if (!commands)
 		return ;
-	while (start->next)
+	while (commands->next)
 	{
-		cont = (char *)start->content;
+		cont = (char *)commands->content;
 		ft_putendl(cont);
-		start = start->next;
+		commands = commands->next;
 	}
-	cont = (char *)start->content;
-	ft_putendl(cont); //last one gets newline or not?
+	cont = (char *)commands->content;
+	ft_putendl(cont);
+	ft_putchar('\n'); //current format of checker stops at double \n
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_stk	*list;
 	t_list	*commands;

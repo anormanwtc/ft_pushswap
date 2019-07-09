@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:37:42 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/08 14:23:52 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/09 13:57:59 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Uses chain lists where you can go both ways and also last->next = start
 */
 
-t_stk	*st_stacknew(int val)
+static t_stk	*st_stacknew(int val)
 {
 	t_stk	*start;
 
@@ -30,26 +30,6 @@ t_stk	*st_stacknew(int val)
 
 /*
 ** Starts a new stack, only used if you stackadd to NULL
-*/
-
-void	ft_stackdel(t_stk *start)
-{
-	t_stk	*temp;
-
-	if (start)
-	{
-		temp = start->next;
-		while (temp != start)
-		{
-			temp = temp->next;
-			free(temp->prev);
-		}
-		free(start);
-	}
-}
-
-/*
-** Deletes the whole stack
 */
 
 t_stk	*ft_stackadd(t_stk *start, int val)
@@ -71,6 +51,26 @@ t_stk	*ft_stackadd(t_stk *start, int val)
 
 /*
 ** Adds a new node with val to the stack
+*/
+
+void	ft_stackdel(t_stk *start)
+{
+	t_stk	*temp;
+
+	if (start)
+	{
+		temp = start->next;
+		while (temp != start)
+		{
+			temp = temp->next;
+			free(temp->prev);
+		}
+		free(start);
+	}
+}
+
+/*
+** Deletes the whole stack
 */
 
 void	ft_stackrem(t_stk **node)

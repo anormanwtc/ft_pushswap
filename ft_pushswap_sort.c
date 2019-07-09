@@ -6,29 +6,11 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 12:20:33 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/09 14:34:37 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/09 16:04:31 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftpushswap.h"
-
-static t_stk	*st_stackdup(t_stk *stack)
-{
-	t_stk	*curs;
-	t_stk	*new;
-	
-	if (!stack)
-		return (NULL);
-	curs = stack->next;
-	new = NULL;
-	while (curs != stack)
-	{
-		new = ft_stackadd(new, curs->prev->val);
-		curs = curs->next;
-	}
-	new = ft_stackadd(new, curs->prev->val);
-	return (new);
-}
 
 static int		st_basicsort(t_stk *stack)
 {
@@ -51,15 +33,30 @@ static int		st_basicsort(t_stk *stack)
 	return (res);
 }
 
-t_list			*ft_recursort(t_stk *stack)
+t_list			*ft_recurswap(t_stk **stack, int steps)
 {
-	t_list	*commands;
-	t_stk	*curser;
-	static int goal;
+		ft_stkswap('a', stack);
+		if ((commands = ft_recursort(stack, steps + 1)))
+			return (ft_lstadd(commands, ft_lstnew("sa", 3)));
+		ft_stkswap('a', stack);
+		ft_stkswap('b', stack);
+		if ((commands = ft_recursort(stack, steps + 1)))
+			return (ft_lstadd(commands, ft_lstnew("sa", 3)));
+		ft_stkswap('b', stack);
+}
+
+
+t_list			*ft_recursort(t_stk **stack, int steps)
+{
+	t_list		*commands;
+	static int	goal;
 
 	if (!goal)
 		goal = st_basicsort(st_stackdup(stack));
-	curser = stack->next;
 	commands = NULL;
+	while (steps < goal && !ft_stackcheck(stack))
+	{
+
+	}
 	return (commands);
 }

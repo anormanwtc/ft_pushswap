@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/11 14:54:51 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/11 16:49:18 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,14 @@ int		ft_stkpush(char ver, t_stk **stacks)
 		return (-1);
 	if (ver == 'a' && stacks[1] && ++res)
 	{
-		if (!(ft_stackadd(stacks[0], (stacks[1])->val)))
+		if (!(stacks[0] = ft_stackadd(stacks[0], (stacks[1])->val)))
 			return (-1);
 		stacks[0] = (stacks[0])->prev;
 		ft_stackrem(stacks + 1);
 	}
 	if (ver == 'b' && stacks[0] && (res += 2))
 	{
-		if (!(ft_stackadd(stacks[1], (stacks[0])->val)))
+		if (!(stacks[1] = ft_stackadd(stacks[1], (stacks[0])->val)))
 			return (-1);
 		stacks[0] = (stacks[0])->prev;
 		ft_stackrem(stacks);

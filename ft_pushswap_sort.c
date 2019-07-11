@@ -6,57 +6,159 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 12:20:33 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/09 16:04:31 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/11 16:00:03 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftpushswap.h"
 
-static int		st_basicsort(t_stk *stack)
-{
-	t_stk	*a_b[2];
-	int		res;
+/*
+** Each recur one will recursively do the thing and then undo it to try the next
+** Each goes through each chain, success will decrease the goal inside recursort
+** So the last success will be the fastest.
+*/
 
-	if (!stack)
-		return (0);
-	a_b[0] = stack;
-	a_b[1] = NULL;
-	res = 0;
-	while (!ft_stackcheck(a_b))
+t_list			*st_recurswap(t_stk **stack, int steps)
+{
+	t_list	*old;
+	t_list	*replace;
+
+	ft_stkswap('a', stack);
+	if ((replace = ft_recursort(stack, steps + 1)))
+		ft_lstadd(&replace, ft_lstnew("sa", 3));
+	old = replace;
+	ft_stkswap('a', stack);
+	ft_stkswap('b', stack);
+	if ((replace = ft_recursort(stack, steps + 1)))
 	{
-		if (a_b[0]->val > a_b[0]->next->val && ++res)
-			ft_stkswap('a', a_b);
-		ft_stkrotate('A', a_b);
+		ft_lstdel(&old);
+		ft_lstadd(&replace, ft_lstnew("sb", 3));
+		old = replace;
 	}
-	ft_stackprint(a_b[0]);
-	ft_stackdel(stack);
-	return (res);
+	ft_stkswap('b', stack);
+	ft_stkswap('s', stack);
+	if ((replace = ft_recursort(stack, steps + 1)))
+	{
+		ft_lstdel(&old);
+		ft_lstadd(&replace, ft_lstnew("ss", 3));
+		old = replace;
+	}
+	ft_stkswap('s', stack);
+	return (old);
 }
 
-t_list			*ft_recurswap(t_stk **stack, int steps)
+t_list			*st_recurpush(t_stk **stack, int steps)
 {
-		ft_stkswap('a', stack);
-		if ((commands = ft_recursort(stack, steps + 1)))
-			return (ft_lstadd(commands, ft_lstnew("sa", 3)));
-		ft_stkswap('a', stack);
-		ft_stkswap('b', stack);
-		if ((commands = ft_recursort(stack, steps + 1)))
-			return (ft_lstadd(commands, ft_lstnew("sa", 3)));
-		ft_stkswap('b', stack);
+	t_list	*old;
+	t_list	*replace;
+	int		didpush;
+
+	didpush = ft_stkpush('a', stack);
+	if ((replace = ft_recursort(stack, steps + 1)))
+		ft_lstadd(&replace, ft_lstnew("pa", 3));
+	old = replace;
+	if (didpush)
+		ft_stkpush('b', stack);
+	didpush = ft_stkpush('b', stack);
+	if ((replace = ft_recursort(stack, steps + 1)))
+	{
+		ft_lstdel(&old);
+		ft_lstadd(&replace, ft_lstnew("pb", 3));
+		old = replace;
+	}
+	if (didpush)
+		ft_stkpush('a', stack);
+	return (old);
 }
 
+t_list			*st_recur_rot(t_stk **stack, int steps)
+{
+	t_list	*old;
+	t_list	*replace;
+
+	ft_stkrotate('a', stack);
+	if ((replace = ft_recursort(stack, steps + 1)))
+		ft_lstadd(&replace, ft_lstnew("ra", 3));
+	old = replace;
+	ft_stkrotate('A', stack);
+	ft_stkrotate('b', stack);
+	if ((replace = ft_recursort(stack, steps + 1)))
+	{
+		ft_lstdel(&old);
+		ft_lstadd(&replace, ft_lstnew("rb", 3));
+		old = replace;
+	}
+	ft_stkrotate('B', stack);
+	ft_stkrotate('r', stack);
+	if ((replace = ft_recursort(stack, steps + 1)))
+	{
+		ft_lstdel(&old);
+		ft_lstadd(&replace, ft_lstnew("rr", 3));
+		old = replace;
+	}
+	ft_stkrotate('R', stack);
+	return (old);
+}
+
+t_list			*st_recur_rrot(t_stk **stack, int steps)
+{
+	t_list	*old;
+	t_list	*replace;
+
+	ft_stkrotate('A', stack);
+	if ((replace = ft_recursort(stack, steps + 1)))
+		ft_lstadd(&replace, ft_lstnew("rra", 4));
+	old = replace;
+	ft_stkrotate('a', stack);
+	ft_stkrotate('B', stack);
+	if ((replace = ft_recursort(stack, steps + 1)))
+	{
+		ft_lstdel(&old);
+		ft_lstadd(&replace, ft_lstnew("rrb", 4));
+		old = replace;
+	}
+	ft_stkrotate('b', stack);
+	ft_stkrotate('R', stack);
+	if ((replace = ft_recursort(stack, steps + 1)))
+	{
+		ft_lstdel(&old);
+		ft_lstadd(&replace, ft_lstnew("rrr", 4));
+		old = replace;
+	}
+	ft_stkrotate('r', stack);
+	return (old);
+}
+
+/*
+** Each recur one will recursively do the thing and then undo it to try the next
+** Each goes through each chain, success will decrease the goal inside recursort
+** So the last success will be the fastest.
+*/
 
 t_list			*ft_recursort(t_stk **stack, int steps)
 {
-	t_list		*commands;
+	t_list		*old;
+	t_list		*replace;
 	static int	goal;
 
 	if (!goal)
-		goal = st_basicsort(st_stackdup(stack));
-	commands = NULL;
-	while (steps < goal && !ft_stackcheck(stack))
+		goal = ft_basicsort_goal(ft_stacklen(stack[0])) + 1;
+	old = NULL;
+	if (ft_stackcheck(stack))
 	{
-
+		goal = steps - 1;
+		return (ft_lstnew(NULL, 0));
 	}
-	return (commands);
+	if (steps < goal && !ft_stackcheck(stack))
+	{
+		replace = st_recurswap(stack, steps);
+		old = replace;
+		if ((replace = st_recurpush(stack, steps)))
+			ft_lstreplace(old, replace);
+		if ((replace = st_recur_rot(stack, steps)))
+			ft_lstreplace(old, replace);
+		if ((replace = st_recur_rrot(stack, steps)))
+			ft_lstreplace(old, replace);
+	}
+	return (old);
 }

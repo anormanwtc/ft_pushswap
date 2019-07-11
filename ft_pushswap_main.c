@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:51:53 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/09 14:22:14 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/10 12:13:01 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,33 @@ void		st_comprint(t_list *commands)
 
 	if (!commands)
 		return ;
-	while (commands->next)
-	{
-		cont = (char *)commands->content;
-		ft_putendl(cont);
-		commands = commands->next;
-	}
+	st_comprint(commands->next);
 	cont = (char *)commands->content;
 	ft_putendl(cont);
 	ft_putchar('\n'); //current format of checker stops at double \n
 }
 
+/*
+** Recursively does the chain so last in the list is first
+*/
+
 int			main(int ac, char **av)
 {
-	t_stk	*list;
+	t_stk	*stack[2];
 	t_list	*commands;
 
 	if (ac < 2)
 		return (0);
 	av++;
-	if (!(list = ft_stackfill(ac, av)))
+	if (!(stack[0] = ft_stackfill(ac, av)))
 	{
 		ft_putendl_fd("Error stack creation failed", 2);
 		return (0);
 	}
-	commands = ft_recursort(list);
+	stack[1] = NULL;
+	commands = ft_recursort(stack, 0);
 	st_comprint(commands);
-	ft_stackdel(list);
+	ft_stackdel(stack[0]);
+	ft_stackdel(stack[1]);
 	return (0);
 }

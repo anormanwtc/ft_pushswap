@@ -6,7 +6,7 @@
 #    By: anorman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:00:27 by anorman           #+#    #+#              #
-#    Updated: 2019/07/09 15:55:43 by anorman          ###   ########.fr        #
+#    Updated: 2019/07/11 14:33:06 by anorman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,10 @@ fclean: clean
 
 re: fclean all
 
-debug:
-	@gcc -o checker $(FILES) $(CHECKER)\
+ch_debug:
+	@gcc -o $(CH_EXE) $(FILES) $(CHECKER)\
 		$(LIBA) -g -I libft/includes
+
+ps_debug:
+	@gcc -o $(PS_EXE) $(FILES) $(PUSHSWAP)\
+		$(LIBA) -g -I libft/includes libft/srcs/ft_memreplace.c

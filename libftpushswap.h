@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:32:40 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/09 14:17:08 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/11 14:08:00 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef struct	s_stk
 	struct s_stk	*prev;
 }				t_stk;
 
-t_list			*ft_recursort(t_stk *list);
+int				ft_basicsort_goal(int len);
+t_list			*ft_recursort(t_stk **stack, int steps);
 
 t_stk			*ft_stackfill(int ac, char **av);
 void			ft_do_inputs(t_stk **stacks);
@@ -38,5 +39,7 @@ t_stk			*ft_stackadd(t_stk *start, int val);
 void			ft_stackrem(t_stk **node);
 void			ft_stackdel(t_stk *node);
 void			ft_stackprint(t_stk *start);
+t_stk			*ft_stackdup(t_stk *stack);
+int				ft_stacklen(t_stk *stack);
 
 #endif

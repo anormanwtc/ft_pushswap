@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/09 14:14:57 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/11 14:54:51 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ int		ft_stkpush(char ver, t_stk **stacks)
 	res = 0;
 	if (!stacks)
 		return (-1);
-	if (ver == 'a' && ++res && stacks[1])
+	if (ver == 'a' && stacks[1] && ++res)
 	{
 		if (!(ft_stackadd(stacks[0], (stacks[1])->val)))
 			return (-1);
 		stacks[0] = (stacks[0])->prev;
 		ft_stackrem(stacks + 1);
 	}
-	if (ver == 'b' && (res += 2) && stacks[0])
+	if (ver == 'b' && stacks[0] && (res += 2))
 	{
 		if (!(ft_stackadd(stacks[1], (stacks[0])->val)))
 			return (-1);
@@ -95,6 +95,7 @@ int		ft_stkpush(char ver, t_stk **stacks)
 ** since stackadd puts the new on the bottom, it rotates one too.
 ** then it deletes the node just shifted.
 ** -1 for invalid stacks or stackadd failure, 1 for pa, 2 for pb.
+** 0 for did nothing either by nothing in the stack or invalid input.
 */
 
 void	ft_do_inputs(t_stk **stacks)

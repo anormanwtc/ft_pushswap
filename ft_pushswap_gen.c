@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 15:52:04 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/09 15:55:10 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/11 14:08:29 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libftpushswap.h"
@@ -29,7 +29,7 @@ int		ft_stackcheck(t_stk **stack)
 	return (1);
 }
 
-static t_stk	*st_stackdup(t_stk *stack)
+t_stk	*ft_stackdup(t_stk *stack)
 {
 	t_stk	*curs;
 	t_stk	*new;
@@ -45,4 +45,34 @@ static t_stk	*st_stackdup(t_stk *stack)
 	}
 	new = ft_stackadd(new, curs->prev->val);
 	return (new);
+}
+
+int		ft_basicsort_goal(int len)
+{
+	int res;
+
+	res = 2 * len;
+	while (len)
+	{
+		res += (len / 2);
+		len--;
+	}
+	return (res);
+}
+
+int		ft_stacklen(t_stk *start)
+{
+	t_stk	*curs;
+	int		res;
+
+	if (!start)
+		return (0);
+	res = 1;
+	curs = start->next;
+	while (curs != start)
+	{
+		res++;
+		curs = curs->next;
+	}
+	return (res);
 }

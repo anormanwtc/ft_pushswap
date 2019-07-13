@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:37:42 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/13 12:09:12 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/13 12:16:21 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_stk	*ft_stackadd(t_stk *start, int val)
 	new->prev = start->prev;
 	start->prev = new;
 	new->next = start;
-	return (start);
+	return (new);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/13 12:08:57 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/13 14:24:33 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ t_stk	*ft_stackfill(int ac, char **av)
 	t_stk	*list;
 
 	list = NULL;
-	while (ac-- > 1)
+	if (ac-- > 1)
 	{
 		if (ft_can_atoi(*av) != 1)
 		{
@@ -136,6 +136,7 @@ t_stk	*ft_stackfill(int ac, char **av)
 			ft_stackdel(list);
 			return (NULL);
 		}
+		list = ft_stackfill(ac, av + 1);
 		list = ft_stackadd(list, ft_atoi(*av));
 		av++;
 	}

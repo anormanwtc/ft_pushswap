@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:37:42 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/13 12:16:21 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/13 14:11:38 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ t_stk	*ft_stackadd(t_stk *start, int val)
 
 /*
 ** Adds a new node with val to the stack
+** Take the return to make the added be on the top
+** Leave the return to keep it at the back.
 */
 
 void	ft_stackdel(t_stk *start)

@@ -6,14 +6,14 @@
 #    By: anorman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:00:27 by anorman           #+#    #+#              #
-#    Updated: 2019/07/11 14:33:06 by anorman          ###   ########.fr        #
+#    Updated: 2019/07/13 14:06:46 by anorman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -Wall -Werror -Wextra
 NAME = libftpushswap.a
-FILES = ft_checker_avs.c ft_pushswap_gen.c\
-		ft_pushswap_sort.c ft_pushswap_lst.c
+FILES = ft_stackcreate.c ft_stackchanger.c ft_stackgeneral.c\
+		ft_pushswap_sort.c
 
 CHECKER = ft_checker_main.c
 PUSHSWAP = ft_pushswap_main.c
@@ -41,9 +41,9 @@ $(NAME):
 clean:
 	@rm -rf $(OBJ) $(CHECKER:%.c=%.o) $(PUSHSWAP:%.c=%.o)
 	@echo "rm -rf OBJ"
-	@$(MLIBA) fclean
+	#@$(MLIBA) fclean
 	rm -f $(NAME)
-	@echo "make -C libft fclean"
+	#@echo "make -C libft fclean"
 
 fclean: clean
 	@echo "make clean"
@@ -57,4 +57,4 @@ ch_debug:
 
 ps_debug:
 	@gcc -o $(PS_EXE) $(FILES) $(PUSHSWAP)\
-		$(LIBA) -g -I libft/includes libft/srcs/ft_memreplace.c
+		$(LIBA) -g -I libft/includes libft/srcs/ft_lstdel.c

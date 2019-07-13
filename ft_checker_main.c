@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 11:14:54 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/09 14:20:12 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/13 14:27:48 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int		main(int ac, char **av)
 	ft_stackprint(list[0]);
 	ft_stackdel(list[0]);
 	ft_stackdel(list[1]);
+	sleep(10);
 	return (0);
 }

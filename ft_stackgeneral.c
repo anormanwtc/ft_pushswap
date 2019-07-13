@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 15:52:04 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/13 12:09:27 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/13 14:07:51 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libftpushswap.h"
@@ -47,14 +47,15 @@ t_stk	*ft_stackdup(t_stk *stack)
 	return (new);
 }
 
-int		ft_basicsort_goal(int len)
+long		ft_basicsort_goal(int len)
 {
-	int res;
+	long res;
 
-	res = 2 * len;
+	len--;
+	res = 2 * (long)len;
 	while (len)
 	{
-		res += (len / 2);
+		res += ((long)len / 2);
 		len--;
 	}
 	return (res);

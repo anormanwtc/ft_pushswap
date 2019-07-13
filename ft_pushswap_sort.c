@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 12:20:33 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/11 16:00:03 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/13 13:57:51 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** So the last success will be the fastest.
 */
 
-t_list			*st_recurswap(t_stk **stack, int steps)
+t_list			*st_recurswap(t_stk **stack, long steps)
 {
 	t_list	*old;
 	t_list	*replace;
@@ -47,7 +47,7 @@ t_list			*st_recurswap(t_stk **stack, int steps)
 	return (old);
 }
 
-t_list			*st_recurpush(t_stk **stack, int steps)
+t_list			*st_recurpush(t_stk **stack, long steps)
 {
 	t_list	*old;
 	t_list	*replace;
@@ -71,7 +71,7 @@ t_list			*st_recurpush(t_stk **stack, int steps)
 	return (old);
 }
 
-t_list			*st_recur_rot(t_stk **stack, int steps)
+t_list			*st_recur_rot(t_stk **stack, long steps)
 {
 	t_list	*old;
 	t_list	*replace;
@@ -100,7 +100,7 @@ t_list			*st_recur_rot(t_stk **stack, int steps)
 	return (old);
 }
 
-t_list			*st_recur_rrot(t_stk **stack, int steps)
+t_list			*st_recur_rrot(t_stk **stack, long steps)
 {
 	t_list	*old;
 	t_list	*replace;
@@ -135,11 +135,11 @@ t_list			*st_recur_rrot(t_stk **stack, int steps)
 ** So the last success will be the fastest.
 */
 
-t_list			*ft_recursort(t_stk **stack, int steps)
+t_list			*ft_recursort(t_stk **stack, long steps)
 {
 	t_list		*old;
 	t_list		*replace;
-	static int	goal;
+	static long	goal;
 
 	if (!goal)
 		goal = ft_basicsort_goal(ft_stacklen(stack[0])) + 1;
@@ -149,7 +149,7 @@ t_list			*ft_recursort(t_stk **stack, int steps)
 		goal = steps - 1;
 		return (ft_lstnew(NULL, 0));
 	}
-	if (steps < goal && !ft_stackcheck(stack))
+	if (steps < goal)
 	{
 		replace = st_recurswap(stack, steps);
 		old = replace;

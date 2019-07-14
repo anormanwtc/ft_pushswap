@@ -6,7 +6,7 @@
 #    By: anorman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:00:27 by anorman           #+#    #+#              #
-#    Updated: 2019/07/13 14:06:46 by anorman          ###   ########.fr        #
+#    Updated: 2019/07/14 11:40:19 by anorman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,4 +57,5 @@ ch_debug:
 
 ps_debug:
 	@gcc -o $(PS_EXE) $(FILES) $(PUSHSWAP)\
-		$(LIBA) -g -I libft/includes libft/srcs/ft_lstdel.c
+		$(LIBA) -g -I libft/includes\
+	   	libft/srcs/ft_lstdel.c libft/srcs/ft_lstreplace.c

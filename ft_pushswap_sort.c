@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 12:20:33 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/14 12:25:12 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/14 13:53:10 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ t_list			*st_recurswap(t_stk **stack, long steps)
 
 	ft_stkswap('s', stack);
 	if ((replace = ft_recursort(stack, steps + 1, 's')))
-	{
-		ft_lstdel(&old);
 		ft_lstadd(&replace, ft_lstnew("ss", 3));
-		old = replace;
-	}
+	old = replace;
 	ft_stkswap('s', stack);
 	ft_stkswap('a', stack);
 	if ((replace = ft_recursort(stack, steps + 1, 's')))
+	{
+		ft_lstdel(&old);
 		ft_lstadd(&replace, ft_lstnew("sa", 3));
-	old = replace;
+		old = replace;
+	}
 	ft_stkswap('a', stack);
 	ft_stkswap('b', stack);
 	if ((replace = ft_recursort(stack, steps + 1, 's')))
@@ -58,24 +58,21 @@ t_list			*st_recurpush(t_stk **stack, long steps, char prev)
 	int		didpush;
 
 	old = NULL;
-	if (prev != 'P')
+	if (prev != 'P' && (didpush = ft_stkpush('a', stack)))
 	{
-		didpush = ft_stkpush('a', stack);
-		if (didpush && (replace = ft_recursort(stack, steps + 1, 'p')))
+		if ((replace = ft_recursort(stack, steps + 1, 'p')))
 			ft_lstadd(&replace, ft_lstnew("pa", 3));
 		old = replace;
-		if (didpush)
-			ft_stkpush('b', stack);
+		ft_stkpush('b', stack);
 	}
-	if (prev != 'p')
+	if (prev != 'p' && (didpush = ft_stkpush('b', stack)))
 	{
-		didpush = ft_stkpush('b', stack);
-		if (didpush && (replace = ft_recursort(stack, steps + 1, 'P')))
+		if ((replace = ft_recursort(stack, steps + 1, 'P')))
 		{
 			ft_lstadd(&replace, ft_lstnew("pb", 3));
 			ft_lstreplace(&old, replace);
-			ft_stkpush('a', stack);
 		}
+		ft_stkpush('a', stack);
 	}
 	return (old);
 }

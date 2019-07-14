@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:51:53 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/14 12:17:12 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/14 13:49:06 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int			main(int ac, char **av)
 	stack[1] = NULL;
 	commands = ft_recursort(stack, 0, ' ');
 	ft_stackprint(stack[0]);
+	ft_putchar('\n');
 	ft_stackprint(stack[1]);
 	st_comprint(commands);
 	ft_stackdel(stack[0]);

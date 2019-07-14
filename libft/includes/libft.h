@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 14:47:41 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/11 14:37:54 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/14 11:42:17 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_list
 }				t_list;
 
 void			*ft_memset(void *b, int c, size_t len);
-void			ft_memreplace(void *old, void *replacement);
+void			ft_memreplace(void **old, void *replacement);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
@@ -96,7 +96,7 @@ void			ft_lstaddend(t_list **alst, t_list *new);
 void			ft_lstdelmid(t_list **lst, t_list *mid);
 char			*ft_lstcat(t_list *lst);
 void			ft_lstprint(t_list *lst, char *space);
-void			ft_lstreplace(t_list *old, t_list *replace);
+void			ft_lstreplace(t_list **old, t_list *replace);
 
 #endif
 

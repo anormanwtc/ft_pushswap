@@ -6,14 +6,14 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 11:29:36 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/10 11:59:00 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/14 11:41:15 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memreplace(void *old, void *new)
+void	ft_memreplace(void **old, void *new)
 {
-	free(old);
-	old = new;
+	free(*old);
+	*old = new;
 }

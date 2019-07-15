@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:32:40 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/14 12:17:00 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/15 16:39:18 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,21 @@
 
 typedef struct	s_stk
 {
-	int				val;
-	struct s_stk	*next;
-	struct s_stk	*prev;
+	int		*full;
+	int		*start;
+	int		len;
 }				t_stk;
 
-long			ft_basicsort_goal(int len);
-t_list			*ft_recursort(t_stk **stack, long steps, char prev);
+//long			ft_sort_takeout(int len);
 
-t_stk			*ft_stackfill(int ac, char **av);
 void			ft_do_inputs(t_stk **stacks);
-int				ft_stackcheck(t_stk **stack);
+//int				ft_stackcheck(int **stack);
 
 int				ft_stkswap(char ver, t_stk **stacks);
-int				ft_stkrotate(char ver, t_stk **stacks);
+//int				ft_stkrotate(char ver, t_stk **stacks);
 int				ft_stkpush(char ver, t_stk **stacks);
 
-t_stk			*ft_stackadd(t_stk *start, int val);
-void			ft_stackrem(t_stk **node);
-void			ft_stackdel(t_stk *node);
-void			ft_stackprint(t_stk *start);
-t_stk			*ft_stackdup(t_stk *stack);
-int				ft_stacklen(t_stk *stack);
+void			ft_stkdel(t_stk *stack);
+t_stk			*ft_stknew(int len);
 
 #endif

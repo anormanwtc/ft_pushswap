@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 12:20:33 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/14 13:53:10 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/15 14:40:15 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ t_list			*st_recurpush(t_stk **stack, long steps, char prev)
 	int		didpush;
 
 	old = NULL;
-	if (prev != 'P' && (didpush = ft_stkpush('a', stack)))
+	if (prev != 'P' && (didpush = ft_stkpush('a', stack) != 3))
 	{
 		if ((replace = ft_recursort(stack, steps + 1, 'p')))
 			ft_lstadd(&replace, ft_lstnew("pa", 3));
 		old = replace;
 		ft_stkpush('b', stack);
 	}
-	if (prev != 'p' && (didpush = ft_stkpush('b', stack)))
+	if (prev != 'p' && (didpush = ft_stkpush('b', stack) != 3))
 	{
 		if ((replace = ft_recursort(stack, steps + 1, 'P')))
 		{

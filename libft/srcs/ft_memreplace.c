@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 11:29:36 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/14 11:41:15 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/15 14:09:53 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_memreplace(void **old, void *new)
 {
-	free(*old);
-	*old = new;
+	if (old)
+	{
+		free(*old);
+		*old = new;
+	}
 }

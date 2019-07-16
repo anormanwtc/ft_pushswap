@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:32:40 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/15 16:39:18 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/16 11:39:20 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ typedef struct	s_stk
 
 //long			ft_sort_takeout(int len);
 
+int				ft_stackfill(int ac, char **av, t_stk **list);
 void			ft_do_inputs(t_stk **stacks);
-//int				ft_stackcheck(int **stack);
+int				ft_stackcheck(t_stk **stack);
 
 int				ft_stkswap(char ver, t_stk **stacks);
 //int				ft_stkrotate(char ver, t_stk **stacks);
@@ -35,5 +36,6 @@ int				ft_stkpush(char ver, t_stk **stacks);
 
 void			ft_stkdel(t_stk *stack);
 t_stk			*ft_stknew(int len);
+void			ft_stkprint(t_stk *stack);
 
 #endif

@@ -1,41 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checker_main.c                                  :+:      :+:    :+:   */
+/*   ft_general_sortcheck.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/05 11:14:54 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/16 12:15:11 by anorman          ###   ########.fr       */
+/*   Created: 2019/07/09 15:52:04 by anorman           #+#    #+#             */
+/*   Updated: 2019/07/16 12:11:48 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftpushswap.h"
 
-int		main(int ac, char **av)
+int		ft_stackcheck(t_stk **stack)
 {
-	t_stk	*list[2];
+	int		*curs;
+	int		len;
 
-	if (ac < 2)
+	if (stack[1]->len)
 		return (0);
-	av++;
-	if (!ft_stackfill(ac, av, list))
+	if (!(stack[0]->len))
+		return (1);
+	curs = stack[0]->start;
+	len = stack[0]->len;
+	while (len--)
 	{
-		ft_putendl_fd("Error stack creation failed", 2);
-		return (0);
+		if (curs[0] > curs[1])
+			return (0);
+		curs++;
 	}
-	ft_do_inputs(list);
-	if (ft_stackcheck(list))
-		ft_putendl("OK");
-	else
-		ft_putendl("KO");
-	ft_putendl("Stack 1:");
-	ft_stkprint(list[0]);
-	ft_putchar('\n');
-	ft_putendl("Stack 2:");
-	ft_stkprint(list[1]);
-	ft_stkdel(list[0]);
-	ft_stkdel(list[1]);
-//	sleep(10);
-	return (0);
+	return (1);
+}
+
+long		ft_basicsort_goal(int len)
+{
+	long res;
+
+	len--;
+	res = 2 * (long)len;
+	while (len)
+	{
+		res += ((long)len / 2);
+		len--;
+	}
+	return (res);
 }

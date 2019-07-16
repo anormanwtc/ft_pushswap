@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:37:42 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/15 17:01:05 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/16 12:08:22 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,30 @@ void		ft_stkdel(t_stk *stack)
 	free(stack);
 }
 
-t_stk		**ft_stackfill(int ac, char **av, t_stk **list)
+void		ft_stkprint(t_stk *input)
+{
+	int i;
+
+	i = input->len;
+	while (i--)
+	{
+		ft_putnbr(*(input->start));
+		ft_putchar('\n');
+		(input->start)++;
+	}
+}
+
+int			ft_stackfill(int ac, char **av, t_stk **list)
 {
 	int i;
 
 	i = 0;
 	if (!list || (!(list[0] = ft_stknew(ac))))
-		return (NULL);
+		return (0);
 	if (!(list[1] = ft_stknew(ac)))
 	{
 		ft_stkdel(list[0]);
-		return (NULL);
+		return (0);
 	}
 	while (ac-- > 1)
 	{
@@ -57,14 +70,14 @@ t_stk		**ft_stackfill(int ac, char **av, t_stk **list)
 			ft_putendl_fd("Error arg contains non number", 2);
 			ft_stkdel(list[0]);
 			ft_stkdel(list[1]);
-			return (NULL);
+			return (0);
 		}
 		(list[0]->full)[i++] = ft_atoi(*av);
 		(list[0]->len)++;
 		av++;
 	}
 	list[0]->start = list[0]->full;
-	return (list);
+	return (1);
 }
 
 /*

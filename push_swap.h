@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:32:40 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/16 11:39:20 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/17 12:14:19 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int				ft_stkswap(char ver, t_stk **stacks);
 //int				ft_stkrotate(char ver, t_stk **stacks);
 int				ft_stkpush(char ver, t_stk **stacks);
 
-void			ft_stkdel(t_stk *stack);
-t_stk			*ft_stknew(int len);
-void			ft_stkprint(t_stk *stack);
+void			ft_stkdel(t_stk **stack);
+t_stk			**ft_stknew(int len);
+void			ft_stkprint(t_stk **stack);
 
 #endif

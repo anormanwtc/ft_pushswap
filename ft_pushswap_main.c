@@ -6,11 +6,11 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:51:53 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/16 16:29:15 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/17 12:17:54 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftpushswap.h"
+#include "push_swap.h"
 
 void		st_revcomprint(t_list *commands)
 {

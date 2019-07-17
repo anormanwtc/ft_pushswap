@@ -6,11 +6,11 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/16 11:04:30 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/17 12:18:24 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftpushswap.h"
+#include "push_swap.h"
 
 int		ft_stkswap(char ver, t_stk **stacks)
 {

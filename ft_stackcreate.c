@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:37:42 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/17 12:23:51 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/17 16:21:03 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ t_stk		**ft_stknew(int len)
 	res[0] = (t_stk *)malloc(sizeof(t_stk));
 	res[0]->len = 0;
 	res[0]->full = (int *)malloc(sizeof(int) * len);
-	res[0]->start = &(res[0]->full[len - 1]);
+	res[0]->start = &(res[0]->full[len]);
 	res[1] = (t_stk *)malloc(sizeof(t_stk));
 	res[1]->len = 0;
 	res[1]->full = (int *)malloc(sizeof(int) * len);
-	res[1]->start = &(res[1]->full[len - 1]);
+	res[1]->start = &(res[1]->full[len]);
 
 	return (res);
 }
@@ -78,19 +78,18 @@ int			ft_stackfill(int ac, char **av, t_stk **list)
 	i = 0;
 	if (!list)
 		return (0);
-	while (ac-- > 0)
+	while (ac-- > 0 && *av)
 	{
 		if (ft_can_atoi(*av) != 1)
 		{
 			ft_putendl_fd("Error arg contains non integer", 2);
-			ft_stkdel(list);
 			return (0);
 		}
 		(list[0]->full)[i++] = ft_atoi(*av);
+		(list[0]->start)--;
 		(list[0]->len)++;
 		av++;
 	}
-	list[0]->start = list[0]->full;
 	return (1);
 }
 

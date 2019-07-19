@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 11:14:54 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/17 16:29:31 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/19 17:15:26 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ int				main(int ac, char **av)
 	else
 		ft_putendl_fd("Error stack creation failed", 2);
 	ft_stkdel(list);
-//	sleep(10);
 	return (0);
 }

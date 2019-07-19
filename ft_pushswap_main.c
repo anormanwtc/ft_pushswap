@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:51:53 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/17 16:29:39 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/19 17:16:16 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void		st_revcomprint(t_list *commands)
 	st_comprint(commands->next);
 	cont = (char *)commands->content;
 	ft_putendl(cont);
-	ft_putchar('\n'); //current format of checker stops at double \n
-}
+	ft_putchar('\n'); }
 
 /*
 ** Recursively does the chain so its reverse order but quick
+** current format of checker stops at double \n
 */
 
 static void	st_comprint(t_list *commands)
@@ -45,6 +45,7 @@ static void	st_comprint(t_list *commands)
 
 /*
 ** Prints in standard order
+** current format of checker stops at double \n
 */
 
 int			main(int ac, char **av)
@@ -64,7 +65,6 @@ int			main(int ac, char **av)
 		return (0);
 	}
 	stack[1] = NULL;
-//	ft_stackprint(stack);
 	st_comprint(commands);
 	ft_stackdel(stack);
 	return (0);

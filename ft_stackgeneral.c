@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 15:52:04 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/17 16:26:31 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/19 12:57:35 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ char 	**ft_av_split(char *av, int *ac)
 	int		i;
 
 	i = 0;
-	ret = ft_strsplit(av, ' ');
+	if (!(ret = ft_strsplit(av, ' ')))
+	{
+		ac = 0;
+		return (NULL);
+	}
 	while (ret[i])
 		i++;
 	*ac = i;
@@ -74,16 +78,46 @@ char 	**ft_av_split(char *av, int *ac)
 ** For single args separated by spaces
 */
 
-long	ft_basicsort_goal(int len)
+int		ft_stackmin(t_stk *stack)
 {
-	long res;
+	int		ind;
+	int		i;
+	int		*curs;
 
-	len--;
-	res = 2 * (long)len;
-	while (len)
+	if (!stack)
+		return (-1);
+	i = 1;
+	ind = 0;
+	curs = stack->start;
+	while (i < stack->len)
 	{
-		res += ((long)len / 2);
-		len--;
+		if (curs[ind] > curs[i + 1])
+			ind = i;
+		i++;
 	}
-	return (res);
+	return (ind);
 }
+
+int		ft_stackmax(t_stk *stack)
+{
+	int		ind;
+	int		i;
+	int		*curs;
+
+	if (!stack)
+		return (-1);
+	i = 1;
+	ind = 0;
+	curs = stack->start;
+	while (i < stack->len)
+	{
+		if (curs[ind] < curs[i])
+			ind = i;
+		i++;
+	}
+	return (ind);
+}
+
+/*
+** Stackmin/max returns the index of the min/max or -1 if !stack
+*/

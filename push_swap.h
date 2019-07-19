@@ -6,12 +6,12 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:32:40 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/17 16:04:03 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/19 17:48:35 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPUSHSWAP_H
-# define LIBFTPUSHSWAP_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 #include "libft/includes/libft.h"
 
@@ -24,8 +24,6 @@ typedef struct	s_stk
 	int		len;
 }				t_stk;
 
-//long			ft_sort_takeout(int len);
-
 int				ft_stackfill(int ac, char **av, t_stk **list);
 void			ft_do_inputs(t_stk **stacks);
 int				ft_stackcheck(t_stk **stack);
@@ -33,8 +31,12 @@ int				ft_no_dups(t_stk *stack);
 char			**ft_av_split(char *av, int *ac);
 
 int				ft_stkswap(char ver, t_stk **stacks);
-//int				ft_stkrotate(char ver, t_stk **stacks);
+int				ft_stkrotate(char ver, t_stk **stacks);
+int				ft_stkrevtate(char ver, t_stk **stacks);
 int				ft_stkpush(char ver, t_stk **stacks);
+
+int				ft_stackmin(t_stk *stack);
+int				ft_stackmax(t_stk *stack);
 
 void			ft_stkdel(t_stk **stack);
 t_stk			**ft_stknew(int len);

@@ -6,31 +6,46 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 13:00:33 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/19 13:21:46 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/21 17:59:58 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_list		*ft_short_rot_a(t_stk **stack, int index);
-{
-	t_list	*commands;
+#include "push_swap.h"
 
-	commands = NULL;
-	if (index > stack->len / 2)
+void		ft_rota_to(t_stk **stack, int index)
+{
+	if (index > stack[0]->len / 2)
 	{
-		index = stack-len - index;
+		index = stack[0]->len - index;
 		while (index--)
 		{
-			ft_lstadd(commands, ft_lstnew("rra", 4));
 			ft_stkrevtate('a', stack);
+			write(1, "rra\n", 4);
 		}
 	}
 	else
 		while (index--)
 		{
-			ft_lstadd(commands, ft_lstnew("ra", 3));
 			ft_stkrevtate('a', stack);
+			write(1, "ra\n", 3);
 		}
-	return (commands);
 }
 
-
+void		ft_rotb_to(t_stk **stack, int index)
+{
+	if (index > stack[1]->len / 2)
+	{
+		index = stack[1]->len - index;
+		while (index--)
+		{
+			ft_stkrevtate('b', stack);
+			write(1, "rrb\n", 4);
+		}
+	}
+	else
+		while (index--)
+		{
+			ft_stkrevtate('a', stack);
+			write(1, "rb\n", 3);
+		}
+}

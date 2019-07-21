@@ -6,13 +6,14 @@
 #    By: anorman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:00:27 by anorman           #+#    #+#              #
-#    Updated: 2019/07/16 12:12:35 by anorman          ###   ########.fr        #
+#    Updated: 2019/07/21 17:56:42 by anorman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -Wall -Werror -Wextra
 NAME = libftpushswap.a
-FILES = ft_stackcreate.c ft_stackinputs.c ft_stackgeneral.c\
+FILES = ft_stackcreate.c ft_stackinputs.c ft_stackgeneral.c ft_stacksort.c\
+		ft_stackbigsort.c ft_stackminorsort.c
 
 CH_MAIN = ft_checker_main.c
 PS_MAIN = ft_pushswap_main.c
@@ -30,12 +31,12 @@ all: $(NAME)
 $(NAME):
 	@$(MLIBA) re
 	@echo "compiling libft.a"
-	@gcc -c $(FLAGS) $(FILES) $(CH_MAIN) #$(PS_MAIN)
+	@gcc -c $(FLAGS) $(FILES) $(CH_MAIN) $(PS_MAIN)
 	@echo "gcc -c $(FLAGS) FILES"
 	@ar -rcs $(NAME) $(OBJ)
 	@echo "ar -rcs $(NAME) OBJ"
 	@gcc -o $(CH_EXE) $(CH_MAIN:%.c=%.o) $(NAME) $(LIBA)
-	#@gcc -o $(PS_EXE) $(PS_MAIN:%.c=%.o) $(NAME) $(LIBA)
+	@gcc -o $(PS_EXE) $(PS_MAIN:%.c=%.o) $(NAME) $(LIBA)
 	@rm -rf $(OBJ) $(CH_MAIN:%.c=%.o) $(PS_MAIN:%.c=%.o)
 
 quick:

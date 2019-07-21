@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 15:52:04 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/21 14:13:19 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/21 15:53:36 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int		ft_stackcheck(t_stk **stack)
 
 	if (stack[1]->len)
 		return (0);
-	if (!(stack[0]->len))
+	if ((stack[0]->len) < 2)
 		return (1);
 	curs = stack[0]->start;
 	len = stack[0]->len;
-	while (len--)
+	while (--len)
 	{
 		if (curs[0] > curs[1])
 			return (0);

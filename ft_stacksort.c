@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_varioussort.c                                   :+:      :+:    :+:   */
+/*   ft_stacksort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/17 16:45:51 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/19 17:49:21 by anorman          ###   ########.fr       */
+/*   Created: 2019/07/21 15:41:20 by anorman           #+#    #+#             */
+/*   Updated: 2019/07/21 15:50:59 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_ps_len3(t_stk **stack)
+static t_list	*st_shortstk_sort(t_stk **stack)
 {
 	int		max;
 	t_list *commands;
 
 	commands = NULL;
-	if (ft_stackcheck(stack))
+	if (len < 2)
 		return (ft_lstnew("", 1));
 	if ((*stack)->len == 2)
 		if ((*stack)->start[0] > (*stack)->start[1])
@@ -35,3 +35,15 @@ t_list	*ft_ps_len3(t_stk **stack)
 	}
 	return (commands);
 }
+
+t_list			*ft_stksort(t_stk **stack)
+{
+	if (ft_stackcheck(stack))
+		return (ft_lstnew("", 1));
+	if (stack[0]->len < 3)
+		return (st_shortstk_sort(stack));
+	return (ft_bigstk_sort(stack));
+}
+
+
+

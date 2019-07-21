@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 15:52:04 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/19 12:57:35 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/21 14:13:19 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,6 @@ int		ft_no_dups(t_stk *stack)
 	}
 	return (1);
 }
-
-char 	**ft_av_split(char *av, int *ac)
-{
-	char	**ret;
-	int		i;
-
-	i = 0;
-	if (!(ret = ft_strsplit(av, ' ')))
-	{
-		ac = 0;
-		return (NULL);
-	}
-	while (ret[i])
-		i++;
-	*ac = i;
-	return (ret);
-}
-
-/*
-** For single args separated by spaces
-*/
 
 int		ft_stackmin(t_stk *stack)
 {

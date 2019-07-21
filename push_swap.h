@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:32:40 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/19 17:48:35 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/21 14:27:38 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int				ft_stackfill(int ac, char **av, t_stk **list);
 void			ft_do_inputs(t_stk **stacks);
 int				ft_stackcheck(t_stk **stack);
 int				ft_no_dups(t_stk *stack);
-char			**ft_av_split(char *av, int *ac);
 
 int				ft_stkswap(char ver, t_stk **stacks);
 int				ft_stkrotate(char ver, t_stk **stacks);

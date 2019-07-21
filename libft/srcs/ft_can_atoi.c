@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:09:04 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/21 13:44:05 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/21 14:26:33 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		ft_can_atoi(char *str)
 	}
 	if (*intmax)
 		return (1 + ft_isspace(str[0]) + (str[i] != '\0') * 2);
-	else if (big || str[i] > 47 && str[i] < 58)
+	else if (big || (str[i] > 47 && str[i] < 58))
 		return (0);
 	return (-1);
 }

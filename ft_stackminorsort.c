@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 13:00:33 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/22 16:53:14 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/22 17:18:36 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ int			ft_shortest_to_pb(t_stk **stack)
 
 void		ft_pbindex_inorder(t_stk **stack, int i)
 {
-	int k;
-	int common;
-	char type;
+	int		k;
+	int		common;
+	char	type;
 
 	k = ft_pushplace(stack[1]->start, stack[1]->len, stack[0]->start[i]);
 	type = ' ';
@@ -125,5 +125,3 @@ void		ft_pbindex_inorder(t_stk **stack, int i)
 	ft_rota_to(stack, i);
 	ft_rotb_to(stack, k);
 }
-
-

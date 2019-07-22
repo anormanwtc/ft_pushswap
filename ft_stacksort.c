@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 15:41:20 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/21 17:52:36 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/22 17:18:06 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		st_shortstk_sort(t_stk **stack)
 {
 	int		max;
-	t_list *commands;
+	t_list	*commands;
 
 	commands = NULL;
 	if ((*stack)->len == 2)

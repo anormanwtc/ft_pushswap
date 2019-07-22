@@ -6,47 +6,11 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:51:53 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/22 09:46:15 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/22 16:55:55 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-void		st_revcomprint(t_list *commands)
-{
-	char	*cont;
-
-	if (!commands)
-		return ;
-	cont = (char *)commands->content;
-	ft_putendl(cont);
-	ft_putchar('\n'); 
-}
-*/
-/*
-** Recursively does the chain so its reverse order but quick
-** current format of checker stops at double \n
-*/
-/*
-static void	st_comprint(t_list *commands)
-{
-	char *cont;
-
-	if (!commands)
-		return ;
-	while (commands)
-	{
-		cont = (char *)commands->content;
-		ft_putendl(cont);
-		commands = commands->next;
-	}
-	ft_putchar('\n');
-}
-*/
-/*
-** Prints in standard order
-** current format of checker stops at double \n
-*/
 
 int			main(int ac, char **av)
 {

@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:37:42 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/17 16:21:03 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/22 17:17:56 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ t_stk		**ft_stknew(int len)
 	res[1]->len = 0;
 	res[1]->full = (int *)malloc(sizeof(int) * len);
 	res[1]->start = &(res[1]->full[len]);
-
 	return (res);
 }
 
@@ -68,7 +67,6 @@ void		ft_stkprint(t_stk **input)
 		ft_putchar('\n');
 		(input[1]->start)++;
 	}
-
 }
 
 int			ft_stackfill(int ac, char **av, t_stk **list)

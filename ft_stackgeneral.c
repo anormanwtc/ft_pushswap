@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 15:52:04 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/21 15:53:36 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/22 09:54:52 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		ft_stackmin(t_stk *stack)
 	curs = stack->start;
 	while (i < stack->len)
 	{
-		if (curs[ind] > curs[i + 1])
+		if (curs[ind] > curs[i])
 			ind = i;
 		i++;
 	}

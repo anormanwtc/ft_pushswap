@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:51:53 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/21 17:47:27 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/22 09:46:15 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int			main(int ac, char **av)
 		return (0);
 	}
 	ft_stksort(stack);
-	stack[1] = NULL;
 	ft_stkdel(stack);
 	return (0);
 }

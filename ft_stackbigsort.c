@@ -6,39 +6,71 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 16:00:24 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/22 16:52:02 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/23 17:22:17 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int				ft_pushplace(int *arr, int len, int elem)
+int				ft_pushplace_a(int *arr, int len, int elem)
 {
 	int place;
 	int i;
+	int min;
 
 	i = 0;
+	min = arr[0];
 	place = 0;
 	if (len == 2 && elem > arr[0] && elem < arr[1])
 		place = 1;
-	else if (len == 2 && elem < arr[0] && elem > arr[1])
+	else if (len == 2 || (elem > arr[0] && elem < arr[len]))
 		place = 0;
 	else
 		while (i + 1 < len)
 		{
 			if (elem > arr[i] && elem < arr[i + 1])
-			{
-				place = i + 1;
-				break ;
-			}
+				return (i + 1);
 			i++;
+			if (arr[i] < min)
+			{
+				min = arr[i];
+				place = i;
+			}
 		}
 	return (place);
 }
 
 /*
-** Pushes all back to a in order.
+** Chooses push location to maintain order.
 */
+
+int				ft_pushplace_b(int *arr, int len, int elem)
+{
+	int place;
+	int i;
+	int max;
+
+	i = 0;
+	place = 0;
+	max = arr[0];
+	if (len == 2 && elem > arr[0] && elem < arr[1])
+		place = 1;
+	else if (len == 2 || (elem > arr[0] && elem < arr[len]))
+		place = 0;
+	else
+		while (i + 1 < len)
+		{
+			if (elem < arr[i] && elem > arr[i + 1])
+				return (i + 1);
+			i++;
+			if (arr[i] > max)
+			{
+				max = arr[i];
+				place = i;
+			}
+		}
+	return (place);
+}
 
 static void		st_pa_allordered(t_stk **stack)
 {
@@ -46,7 +78,7 @@ static void		st_pa_allordered(t_stk **stack)
 
 	while (stack[1]->len)
 	{
-		index = ft_pushplace(stack[0]->start, stack[0]->len
+		index = ft_pushplace_a(stack[0]->start, stack[0]->len
 				, stack[1]->start[0]);
 		ft_rota_to(stack, index);
 		ft_stkpush('a', stack);

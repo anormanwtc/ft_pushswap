@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 13:00:33 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/22 17:18:36 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/23 17:02:10 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		ft_rota_to(t_stk **stack, int index)
 			write(1, "rra\n", 4);
 		}
 	}
-	else
+	else if (index > 0)
 		while (index--)
 		{
 			ft_stkrotate('a', stack);
@@ -42,10 +42,10 @@ void		ft_rotb_to(t_stk **stack, int index)
 			write(1, "rrb\n", 4);
 		}
 	}
-	else
+	else if (index > 0)
 		while (index--)
 		{
-			ft_stkrotate('a', stack);
+			ft_stkrotate('b', stack);
 			write(1, "rb\n", 3);
 		}
 }
@@ -78,7 +78,7 @@ int			ft_shortest_to_pb(t_stk **stack)
 	best = -1;
 	while (i < stack[0]->len)
 	{
-		k = ft_pushplace(stack[1]->start, stack[1]->len, stack[0]->start[i]);
+		k = ft_pushplace_b(stack[1]->start, stack[1]->len, stack[0]->start[i]);
 		if (i < stack[0]->len / 2 && k < stack[1]->len)
 			moves = (i > k ? i - k : k - i);
 		else if (i >= stack[0]->len / 2 && k >= stack[1]->len)
@@ -90,6 +90,7 @@ int			ft_shortest_to_pb(t_stk **stack)
 			best = moves;
 			index = i;
 		}
+		i++;
 	}
 	return (index);
 }
@@ -105,16 +106,16 @@ void		ft_pbindex_inorder(t_stk **stack, int i)
 	int		common;
 	char	type;
 
-	k = ft_pushplace(stack[1]->start, stack[1]->len, stack[0]->start[i]);
+	k = ft_pushplace_b(stack[1]->start, stack[1]->len, stack[0]->start[i]);
 	type = ' ';
 	if (i < stack[0]->len / 2 && k < stack[1]->len)
 	{
-		common = (i > k ? i - k : k - i);
+		common = (i > k ? k : i);
 		type = 'r';
 	}
 	else if (i >= stack[0]->len / 2 && k >= stack[1]->len)
 	{
-		common = (i > k ? i - k : k - i);
+		common = (i > k ? k : i);
 		type = 'R';
 	}
 	else
@@ -124,4 +125,6 @@ void		ft_pbindex_inorder(t_stk **stack, int i)
 	ft_rotr_num(stack, common, type);
 	ft_rota_to(stack, i);
 	ft_rotb_to(stack, k);
+	ft_stkpush('b', stack);
+	write(1, "pb\n", 3);
 }

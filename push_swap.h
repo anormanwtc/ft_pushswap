@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:32:40 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/22 16:48:56 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/23 16:03:12 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void			ft_rota_to(t_stk **stack, int index);
 void			ft_rotb_to(t_stk **stack, int index);
 void			ft_rotr_num(t_stk **stack, int num, char type);
 int				ft_shortest_to_pb(t_stk **stack);
-int				ft_pushplace(int *arr, int len, int elem);
+int				ft_pushplace_a(int *arr, int len, int elem);
+int				ft_pushplace_b(int *arr, int len, int elem);
 void			ft_pbindex_inorder(t_stk **stack, int i);
 
 void			ft_stkdel(t_stk **stack);

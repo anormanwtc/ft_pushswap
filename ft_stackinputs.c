@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/21 14:51:00 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/23 17:35:19 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		ft_stkrevtate(char ver, t_stk **stacks)
 	if ((ver == 'a' || ver == 'r') && ++result && stacks[0]->len > 1)
 	{
 		i = stacks[0]->len;
-		temp = stacks[0]->start[stacks[0]->len - 1];
+		temp = stacks[0]->start[i - 1];
 		while (--i > 0)
 			*(stacks[0]->start + i) = *(stacks[0]->start + i - 1);
 		*(stacks[0]->start) = temp;
@@ -62,9 +62,10 @@ int		ft_stkrevtate(char ver, t_stk **stacks)
 	if ((ver == 'b' || ver == 'r') && (result += 2) && stacks[1]->len > 1)
 	{
 		i = stacks[1]->len;
-		*(stacks[1]->start) = stacks[1]->start[stacks[1]->len - 1];
-		while (--i + 1 < stacks[1]->len)
+		*(stacks[1]->start) = stacks[1]->start[i - 1];
+		while (--i > 0 )
 			*(stacks[1]->start + i) = *(stacks[1]->start + i - 1);
+		*(stacks[0]->start) = temp;
 	}
 	return (result);
 }
@@ -86,6 +87,7 @@ int		ft_stkrotate(char ver, t_stk **stacks)
 			*(stacks[0]->start + i) = *(stacks[0]->start + i + 1);
 		*(stacks[0]->start + i) = temp;
 	}
+	i = -1;
 	if ((ver == 'b' || ver == 'r') && (result += 2) && stacks[1]->len > 1)
 	{
 		temp = *(stacks[1]->start + i + 1);

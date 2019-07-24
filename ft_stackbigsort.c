@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 16:00:24 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/24 11:47:42 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/24 12:26:57 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,19 @@ int				ft_pushplace_b(int *arr, int len, int elem)
 	i = 0;
 	place = 0;
 	max = arr[0];
-	if (len == 2 && elem > arr[0] && elem < arr[1])
-		place = 1;
-	else if (len == 2 || (elem > arr[0] && elem < arr[len - 1]))
-		place = 0;
-	else
-		while (i + 1 < len)
+	while (i + 1 < len)
+	{
+		if (elem < arr[i] && elem > arr[i + 1])
+			return (i + 1);
+		i++;
+		if (arr[i] > max)
 		{
-			if (elem < arr[i] && elem > arr[i + 1])
-				return (i + 1);
-			i++;
-			if (arr[i] > max)
-			{
-				max = arr[i];
-				place = i;
-			}
+			max = arr[i];
+			place = i;
 		}
+	}
+	if ((elem > arr[0] && elem < arr[len - 1]))
+		place = 0;
 	return (place);
 }
 
@@ -125,11 +122,14 @@ void			ft_bigsort(t_stk **stacks)
 	ft_stkpush('b', stacks);
 	ft_stkpush('b', stacks);
 	write(1, "pb\npb\n", 6);
-	while (stacks[0]->len)// > opti)
+	while (stacks[0]->len > 1)// > opti)
 	{
 		index = ft_shortest_to_pb(stacks);
 		ft_pbindex_inorder(stacks, index);
 	}
+	index = ft_pushplace_b(stacks[1]->start, stacks[1]->len, 
+			stacks[0]->start[0]);
+	ft_rotb_to(stacks, index);
 //	st_pb_all(stacks);
 	st_pa_allordered(stacks);
 }

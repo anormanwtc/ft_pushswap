@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 13:00:33 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/23 17:02:10 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/24 11:22:25 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,12 +108,12 @@ void		ft_pbindex_inorder(t_stk **stack, int i)
 
 	k = ft_pushplace_b(stack[1]->start, stack[1]->len, stack[0]->start[i]);
 	type = ' ';
-	if (i < stack[0]->len / 2 && k < stack[1]->len)
+	if (i < stack[0]->len / 2 && k < stack[1]->len / 2)
 	{
 		common = (i > k ? k : i);
 		type = 'r';
 	}
-	else if (i >= stack[0]->len / 2 && k >= stack[1]->len)
+	else if (i >= stack[0]->len / 2 && k >= stack[1]->len / 2)
 	{
 		common = (i > k ? k : i);
 		type = 'R';

@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 13:00:33 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/24 11:22:25 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/25 14:07:35 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ int			ft_shortest_to_pb(t_stk **stack)
 	while (i < stack[0]->len)
 	{
 		k = ft_pushplace_b(stack[1]->start, stack[1]->len, stack[0]->start[i]);
-		if (i < stack[0]->len / 2 && k < stack[1]->len)
+		if (i < stack[0]->len / 2 && k < stack[1]->len / 2)
 			moves = (i > k ? i - k : k - i);
-		else if (i >= stack[0]->len / 2 && k >= stack[1]->len)
+		else if (i >= stack[0]->len / 2 && k >= stack[1]->len / 2)
 			moves = (i > k ? i - k : k - i);
 		else
 			moves = i + k;

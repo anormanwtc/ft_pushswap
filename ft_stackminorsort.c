@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 13:00:33 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/25 16:43:35 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/26 12:26:13 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void		ft_rotb_to(t_stk **stack, int index)
 void		ft_rotr_num(t_stk **stack, int num, char type)
 {
 	if (type == 'R')
-		while (num--)
+		while (num++)
 		{
 			ft_stkrevtate('r', stack);
 			write(1, "rrr\n", 4);
@@ -68,63 +68,65 @@ void		ft_rotr_num(t_stk **stack, int num, char type)
 
 int			ft_shortest_to_pb(t_stk **stack)
 {
-	int i;
-	int k;
-	int best;
-	int index;
-	int moves;
+	int i[3];
+	int k[2];
+	int moves[2];
 
-	i = 0;
-	best = -1;
-	while (i < stack[0]->len)
+	ft_bzero(i, 2);
+	moves[0] = -1;
+	while (i[0] < stack[0]->len)
 	{
-		k = ft_pushplace_b(stack[1]->start, stack[1]->len, stack[0]->start[i]);
-		if (i < stack[0]->len / 2 && k < stack[1]->len / 2)
-			moves = (i > k ? i : k);
-		else if (i >= stack[0]->len / 2 && k >= stack[1]->len / 2)
-			moves = (i > k ? i : k);
+		k[0] = ft_pushplace_b(stack[1]->start,
+				stack[1]->len, stack[0]->start[i[0]]);
+		ft_calcrot(i, k, stack);
+		if ((i[0] == i[1] && k[0] == k[1]) || (i[0] != i[1] && k[0] != k[1]))
+			moves[1] = (i[1] > k[1] ? i[1] : k[1]);
 		else
-			moves = i + k;
-		if (best == -1 || moves < best)
+			moves[1] = i[1] + k[1];
+		if (moves[0] == -1 || moves[1] < moves[0])
 		{
-			best = moves;
-			index = i;
+			moves[0] = moves[1];
+			i[2] = i[0];
 		}
-		i++;
+		i[0]++;
 	}
-	return (index);
+	return (i[2]);
 }
 
 /*
+** [0] is old, [1] is new, [2] is final
 ** Returns the index of the one that
 ** Will take the shortest path to move into place
 */
 
-void		ft_pbindex_inorder(t_stk **stack, int i)
+void		ft_pbindex_inorder(t_stk **stack, int *i)
 {
-	int		k;
+	int		k[2];
 	int		common;
 	char	type;
 
-	k = ft_pushplace_b(stack[1]->start, stack[1]->len, stack[0]->start[i]);
+	k[0] = ft_pushplace_b(stack[1]->start,
+			stack[1]->len, stack[0]->start[i[0]]);
 	type = ' ';
-	if (i < stack[0]->len / 2 && k < stack[1]->len / 2)
-	{
-		common = (i > k ? k : i);
+	ft_calcrot(i, k, stack);
+	common = (i[1] > k[1] ? k[1] : i[1]);
+	if (i[0] == i[1] && k[0] == k[1])
 		type = 'r';
-	}
-	else if (i >= stack[0]->len / 2 && k >= stack[1]->len / 2)
+	else if (i[0] != i[1] && k[0] != k[1])
 	{
-		common = (i > k ? k : i);
+		common *= -1;
 		type = 'R';
 	}
 	else
 		common = 0;
-	i -= common;
-	k -= common;
+	i[0] -= common;
+	k[0] -= common;
 	ft_rotr_num(stack, common, type);
-	ft_rota_to(stack, i);
-	ft_rotb_to(stack, k);
+	ft_rota_to(stack, i[0]);
+	ft_rotb_to(stack, k[0]);
 	ft_stkpush('b', stack);
 	write(1, "pb\n", 3);
 }
+/*
+** [0] is old, [1] is new, [2] is final
+*/

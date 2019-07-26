@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 16:00:24 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/24 16:51:52 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/26 11:56:14 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static void		st_pb_all(t_stk **stack)
 void			ft_bigsort(t_stk **stacks)
 {
 	int		opti;
-	int		index;
+	int		index[2];
 
 	opti = (stacks[0]->len > 200 ? 50 : 2);
 	ft_stkpush('b', stacks);
@@ -121,7 +121,7 @@ void			ft_bigsort(t_stk **stacks)
 	write(1, "pb\npb\n", 6);
 	while (stacks[0]->len > opti)
 	{
-		index = ft_shortest_to_pb(stacks);
+		index[0] = ft_shortest_to_pb(stacks);
 		ft_pbindex_inorder(stacks, index);
 	}
 	st_pb_all(stacks);

@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 15:52:04 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/22 09:54:52 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/26 11:50:42 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,20 @@ int		ft_stackmax(t_stk *stack)
 
 /*
 ** Stackmin/max returns the index of the min/max or -1 if !stack
+*/
+
+void	ft_calcrot(int *i, int *k, t_stk **stack)
+{
+	if (i[0] < stack[0]->len / 2)
+		i[1] = i[0];
+	else
+		i[1] = stack[0]->len - i[0];
+	if (k[0] < stack[1]->len / 2)
+		k[1] = k[0];
+	else
+		k[1] = stack[1]->len - k[0];
+}
+
+/*
+** Sets i/k [1] (new) as the real distance to rotate
 */

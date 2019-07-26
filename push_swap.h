@@ -6,16 +6,15 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:32:40 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/26 11:59:38 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/26 16:53:38 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libft/includes/libft.h"
-
-#define BUFF 20
+# include "libft/includes/libft.h"
+# define BUFF 10
 
 typedef struct	s_stk
 {

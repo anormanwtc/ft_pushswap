@@ -6,12 +6,12 @@
 #    By: anorman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:00:27 by anorman           #+#    #+#              #
-#    Updated: 2019/07/21 17:56:42 by anorman          ###   ########.fr        #
+#    Updated: 2019/07/26 16:55:55 by anorman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -Wall -Werror -Wextra
-NAME = libftpushswap.a
+NAME = push_swap.a
 FILES = ft_stackcreate.c ft_stackinputs.c ft_stackgeneral.c ft_stacksort.c\
 		ft_stackbigsort.c ft_stackminorsort.c
 
@@ -48,13 +48,12 @@ quick:
 clean:
 	@rm -rf $(OBJ) $(CH_MAIN:%.c=%.o) $(PS_MAIN:%.c=%.o)
 	@echo "rm -rf OBJ"
-	#@$(MLIBA) fclean
+	@$(MLIBA) fclean
 	rm -f $(NAME)
-	#@echo "make -C libft fclean"
+	@echo "make -C libft fclean"
 
 @clean:
 	@rm -rf $(OBJ) $(CH_MAIN:%.c=%.o) $(PS_MAIN:%.c=%.o)
-	@#$(MLIBA) fclean
 	@rm -f $(NAME)
 
 fclean: @clean

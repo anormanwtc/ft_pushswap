@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 15:41:20 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/22 17:18:06 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/29 17:07:45 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			ft_stksort(t_stk **stack)
 {
 	if (ft_stackcheck(stack))
 		return ;
-	if (stack[0]->len < 3)
+	if (stack[0]->len <= 3)
 		st_shortstk_sort(stack);
 	else
 		ft_bigsort(stack);

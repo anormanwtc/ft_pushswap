@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 14:47:41 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/26 16:51:53 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/30 13:04:19 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void			ft_lstprint(t_list *lst, char *space);
 void			ft_lstreplace(t_list **old, t_list *replace);
 
 char			**ft_av_split(char *av, int *ac);
+void			ft_av_del(char **av);
 
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);

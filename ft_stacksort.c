@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 15:41:20 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/29 17:07:45 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/29 17:20:15 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void		st_shortstk_sort(t_stk **stack)
 	if ((*stack)->len == 3)
 	{
 		max = ft_stackmax(*stack);
-		if (max == 0)
+		if (max == 0 && ft_stkrotate('a', stack))
 			write(1, "ra\n", 3);
-		else if (max == 1)
+		else if (max == 1 && ft_stkrevtate('a', stack))
 			write(1, "rra\n", 4);
 		if ((*stack)->start[0] > (*stack)->start[1])
 			write(1, "sa\n", 3);

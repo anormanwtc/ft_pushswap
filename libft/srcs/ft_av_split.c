@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 13:31:30 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/21 13:37:49 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/30 14:04:59 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,20 @@ char	**ft_av_split(char *av, int *ac)
 	i = 0;
 	if (!(ret = ft_strsplit(av, ' ')))
 	{
-		ac = 0;
+		*ac = 0;
 		return (NULL);
 	}
 	while (ret[i])
 		i++;
 	*ac = i;
 	return (ret);
+}
+
+void	ft_av_del(char **av)
+{
+	while (*av)
+	{
+		free(*av);
+		av++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/24 11:36:18 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/30 15:40:29 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int		ft_stkpush(char ver, t_stk **stacks)
 ** 0 for invalid input
 */
 
-void	ft_do_inputs(t_stk **stacks)
+int		ft_do_inputs(t_stk **stacks)
 {
 	char	*input;
 	int		red;
@@ -157,11 +157,14 @@ void	ft_do_inputs(t_stk **stacks)
 			valid = ft_stkrevtate(input[2], stacks);
 		else
 			valid = 0;
+		ft_strdel(&input);
 	}
+	ft_strdel(&input);
 	if (valid < 1)
-		ft_putendl_fd("Error invalid command", 2);
+		return (0);
 	if (red < 0)
-		ft_putendl_fd("Error read failed", 2);
+		return (0);
+	return (1);
 }
 
 /*

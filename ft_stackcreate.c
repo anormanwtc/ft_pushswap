@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:37:42 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/30 14:06:21 by anorman          ###   ########.fr       */
+/*   Updated: 2019/08/01 15:10:20 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ void		ft_stkdel(t_stk **stack)
 		return ;
 	free(stack[0]->full);
 	free(stack[0]);
-	stack[0] = NULL;
 	free(stack[1]->full);
 	free(stack[1]);
-	stack[1] = NULL;
+	free(stack);
 }
 
 void		ft_stkprint(t_stk **input)

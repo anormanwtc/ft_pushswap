@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:09:04 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/21 14:26:33 by anorman          ###   ########.fr       */
+/*   Updated: 2019/08/01 16:37:03 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ int		ft_can_atoi(char *str)
 		i++;
 	if (str[i] == '-')
 		intmax = "2147483648";
-	if (str[i] == '-' || str[i] == '+')
-		i++;
 	else
 		intmax = "2147483647";
+	if (str[i] == '-' || str[i] == '+')
+		i++;
 	while (str[i] > 47 && str[i] < 58 && *intmax)
 	{
 		if (str[i++] > *intmax)
 			big = 1;
 		intmax++;
 	}
-	if (*intmax)
+	if (*intmax || (!str[i] && !big))
 		return (1 + ft_isspace(str[0]) + (str[i] != '\0') * 2);
 	else if (big || (str[i] > 47 && str[i] < 58))
 		return (0);

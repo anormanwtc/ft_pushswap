@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:54:31 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/30 15:40:29 by anorman          ###   ########.fr       */
+/*   Updated: 2019/08/01 14:44:49 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,16 @@ int		ft_stkrevtate(char ver, t_stk **stacks)
 		i = stacks[0]->len;
 		temp = stacks[0]->start[i - 1];
 		while (--i > 0)
-			*(stacks[0]->start + i) = *(stacks[0]->start + i - 1);
-		*(stacks[0]->start) = temp;
+			stacks[0]->start[i] = stacks[0]->start[i - 1];
+		stacks[0]->start[0] = temp;
 	}
 	if ((ver == 'b' || ver == 'r') && (result += 2) && stacks[1]->len > 1)
 	{
 		i = stacks[1]->len;
 		temp = stacks[1]->start[i - 1];
 		while (--i > 0)
-			*(stacks[1]->start + i) = *(stacks[1]->start + i - 1);
-		*(stacks[1]->start) = temp;
+			stacks[1]->start[i] = stacks[1]->start[i - 1];
+		stacks[1]->start[0] = temp;
 	}
 	return (result);
 }

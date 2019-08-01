@@ -6,7 +6,7 @@
 #    By: anorman <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/21 16:00:27 by anorman           #+#    #+#              #
-#    Updated: 2019/07/26 16:55:55 by anorman          ###   ########.fr        #
+#    Updated: 2019/07/26 18:17:51 by anorman          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,12 +39,6 @@ $(NAME):
 	@gcc -o $(PS_EXE) $(PS_MAIN:%.c=%.o) $(NAME) $(LIBA)
 	@rm -rf $(OBJ) $(CH_MAIN:%.c=%.o) $(PS_MAIN:%.c=%.o)
 
-quick:
-	@gcc -o $(CH_EXE) $(CH_MAIN:%.c=%.o) $(NAME) $(LIBA)
-	@gcc -o $(PS_EXE) $(PS_MAIN:%.c=%.o) $(NAME) $(LIBA)
-	@echo "gcc -o $(CH_EXE) $(CH_MAIN:%.c=%.o) $(NAME) $(LIBA)"
-	@echo "gcc -o $(PS_EXE) $(PS_MAIN:%.c=%.o) $(NAME) $(LIBA)"
-
 clean:
 	@rm -rf $(OBJ) $(CH_MAIN:%.c=%.o) $(PS_MAIN:%.c=%.o)
 	@echo "rm -rf OBJ"
@@ -52,11 +46,7 @@ clean:
 	rm -f $(NAME)
 	@echo "make -C libft fclean"
 
-@clean:
-	@rm -rf $(OBJ) $(CH_MAIN:%.c=%.o) $(PS_MAIN:%.c=%.o)
-	@rm -f $(NAME)
-
-fclean: @clean
+fclean: clean
 	@echo "make clean"
 	rm -rf $(CH_EXE) $(PS_EXE)
 

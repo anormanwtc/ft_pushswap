@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:51:53 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/30 12:35:13 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/26 18:01:35 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			main(int ac, char **av)
 	stack = ft_stknew(ac);
 	if (!(ft_stackfill(ac, av, stack)) || !ft_no_dups(stack[0]))
 	{
-		ft_putendl_fd("Error stack creation failed", 2);
+		ft_putendl_fd("Error", 2);
 		return (0);
 	}
 	ft_stksort(stack);

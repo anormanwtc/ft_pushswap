@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 15:52:04 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/26 11:50:42 by anorman          ###   ########.fr       */
+/*   Updated: 2019/07/26 18:03:36 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,7 @@ int		ft_no_dups(t_stk *stack)
 		while (k < stack->len)
 		{
 			if (stack->start[i] == stack->start[k])
-			{
-				ft_putstr_fd("Error dupicate number ", 2);
-				ft_putnbr_fd(stack->start[i], 2);
-				ft_putchar_fd('\n', 2);
 				return (0);
-			}
 			k++;
 		}
 		i++;

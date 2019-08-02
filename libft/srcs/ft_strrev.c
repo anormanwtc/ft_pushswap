@@ -6,11 +6,11 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 14:53:41 by anorman           #+#    #+#             */
-/*   Updated: 2019/06/19 14:54:11 by anorman          ###   ########.fr       */
+/*   Updated: 2019/06/25 16:48:05 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	st_strrev(char *ans)
+void	ft_strrev(char *ans)
 {
 	int		start;
 	int		end;

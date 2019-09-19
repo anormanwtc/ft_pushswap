@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 17:51:53 by anorman           #+#    #+#             */
-/*   Updated: 2019/08/30 10:13:34 by anorman          ###   ########.fr       */
+/*   Updated: 2019/09/19 17:05:31 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,18 @@ int			main(int ac, char **av)
 		ft_av_del(av);
 	return (0);
 }
+
+/*
+** Pushswap will choose the order of operations in order to sort the stack
+** It does this by sorting the stack and recording what it did.
+**
+** It starts by taking in arguments, if nothing is given then its finished
+** It splits the arguments if it was one space separated string.
+**
+** It starts by making the stack then filling it and checking for duplicates
+** The stackfill also checks for invalid input.
+**
+** If everything is in order it does the sorting, printing it as it goes.
+**
+** Then everything that needs it is freed
+*/

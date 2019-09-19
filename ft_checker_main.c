@@ -6,7 +6,7 @@
 /*   By: anorman <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 11:14:54 by anorman           #+#    #+#             */
-/*   Updated: 2019/07/30 13:09:46 by anorman          ###   ########.fr       */
+/*   Updated: 2019/09/19 17:01:02 by anorman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,22 @@ int				main(int ac, char **av)
 		ft_av_del(av);
 	return (0);
 }
+
+/*
+** Checker takes in the arguments
+** It splits them if its one space separated argument otherwise moves on.
+**
+** It starts to put them into a stack to work with
+** and stops if something is invalid.
+**
+** If that works it continues and checks for duplicates.
+** I expect it will work with duplicates but it was specified to reject them.
+**
+** Then it takes the input either piped or read from stdin.
+** As it reads it checks validity and does them.
+**
+** if everything is valid so far it checks the order and prints the answer
+** if something was invalid it would have jumped ahead to the else print error
+**
+** Then the stack is freed and if the arguments was split that is freed too
+*/
